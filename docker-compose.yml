@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mongo:4.4
+    container_name: mongodb-local
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - devops-local
+
+  api:
+    build: ./api
+    container_name: api-local
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    environment:
+      - MONGODB_URI=mongodb://db:27017/node-mongo-registration-login-api
+    networks:
+      - devops-local
+
+
+volumes:
+  mongodb-data:
+
+networks:
+  devops-local:
