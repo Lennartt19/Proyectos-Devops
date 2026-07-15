@@ -17,10 +17,9 @@ services:
     depends_on:
       - db
     environment:
-      - MONGODB_URI=mongodb://db:27017/node-mongo-registration-login-api
+      - MONGODB_URI=mongodb://${MONGODB_HOST}:${MONGODB_PUERTO}/${MONGODB_DATABASE}
     networks:
       - devops-local
-
 
 volumes:
   mongodb-data:
