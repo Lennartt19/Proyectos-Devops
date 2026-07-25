@@ -12,5 +12,5 @@ jobs:
       - name: Mostrar información del sistema
         run: cat /etc/os-release
       - name: Mostrar la información del usuario
-        # run: whoami
-        exit run: whoami
+        run: whoami
+        # exit run: whoami
