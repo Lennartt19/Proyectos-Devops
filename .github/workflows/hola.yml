@@ -5,7 +5,7 @@ on:
 
 jobs:
   saludar:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Decir Hola
         run: echo "Hola Desde GitHub Actions! ${{ github.ref_name }} 25/07/2026"
