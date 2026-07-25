@@ -11,3 +11,5 @@ jobs:
         run: echo "Hola Desde GitHub Actions! ${{ github.ref_name }} 25/07/2026"
       - name: Mostrar información del sistema
         run: cat /etc/os-release
+      - name: Mostrar la información del usuario
+        run: whoami
