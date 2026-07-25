@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Decir Hola
-        run: echo "Hola Desde GitHub Actions! ${{ github.ref_name }}"
+        run: echo "Hola Desde GitHub Actions! ${{ github.ref_name }} 25/07/2026"
