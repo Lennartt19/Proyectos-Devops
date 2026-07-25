@@ -1,9 +1,15 @@
 name: Hola Mundo
-on: push
+on:
+  push: {}
+  pull_request: {}
 
 jobs:
   saludar:
     runs-on: ubuntu-latest
     steps:
       - name: Decir Hola
-        run: echo "Hola Desde GitHub Actions! ${{ github.ref_name }}"
+        run: echo "Hola Desde GitHub Actions! ${{ github.ref_name }} 25/07/2026"
+      - name: Mostrar información del sistema
+        run: cat /etc/os-release
+      - name: Mostrar la información del usuario
+        run: whoami
