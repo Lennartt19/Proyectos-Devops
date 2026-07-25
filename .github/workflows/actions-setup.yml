@@ -1,0 +1,17 @@
+name: Actions Setup Workflow
+on:
+  push:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v5
+      - name: Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - name: Correr tests
+        run: bundle exec rspec
