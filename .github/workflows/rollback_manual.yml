@@ -1,0 +1,29 @@
+name: Rollback manual
+on:
+  workflow_dispatch:
+    inputs:
+      version_destino:
+        description: "SHA o tag al que revertir"
+        required: true
+        type: string
+      ambiente:
+        description: "Ambiente a revertir"
+        required: true
+        type: choice
+        options:
+          - produccion
+          - staging
+      confirmar_rollaback:
+        description: "Confirmo que el rollback es intencional"
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  rollback:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Rollback
+        run: echo "Revirtiendo a la versión ${{ inputs.version_destino }} en el ambiente ${{ inputs.ambiente }}"
