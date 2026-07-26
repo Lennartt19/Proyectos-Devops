@@ -4,14 +4,12 @@ on:
 
 jobs:
   setup:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Clonar el repositorio
         uses: actions/checkout@v5
-      - name: Configurar Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Configurar El Node v22
+        uses: actions/setup-node@v5
         with:
-          ruby-version: '3.4'
-          bundler-cache: true
-      - name: Correr tests
-        run: bundle exec rspec
+          node-version: '22'
+          cache: 'npm'
