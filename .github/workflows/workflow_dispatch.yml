@@ -1,0 +1,26 @@
+name: Deploy manual a producción
+on:
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        description: 'Ambiente de destino'
+        required: true
+        type: choice
+        options:
+          - produccion
+          - staging
+        default: staging
+      confirmar:
+        description: 'Confirmo que revise los cambios antes de desplegar'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Desplegar
+        run: echo "Desplegando a mi aplicación de ${{ inputs.ambiente }}"
