@@ -14,12 +14,3 @@ jobs:
       - name: Mostrar la información del usuario
         run: whoami
         # exit run: whoami
-  
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clonar el repositorio
-        uses: actions/checkout@v5
-      - name: Instalar las dependencias del sistema
-        run: sudo apt-get update && sudo apt-get install -y libpq-dev

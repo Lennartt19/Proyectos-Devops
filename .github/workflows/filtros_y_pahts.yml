@@ -1,0 +1,14 @@
+name: Deploy a producción
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Desplegar
+        run: echo "Desplegando a mi aplicación de producción"
