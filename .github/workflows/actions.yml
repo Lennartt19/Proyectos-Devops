@@ -1,14 +1,17 @@
-name: Test Workflow
+name: Contexto de Github Actions
 on:
-  push:
+  push
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  setup:
+    runs-on: ubuntu-24.04
+    env:
+      RAILS_ENV: test #Variable de entorno para el entorno de Rails
     steps:
       - name: Clonar el repositorio
         uses: actions/checkout@v5
-      - name: Listar archivos en el directorio
-        run: ls -la
-      - name: Instalar las dependencias del sistema
-        run: sudo apt-get update && sudo apt-get install -y libpq-dev
+      - name: Mostrar información del commit
+        run: |
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Disparado por: ${{ github.actor }}"
+          echo "Entorno: ${{ env.RAILS_ENV }}"
