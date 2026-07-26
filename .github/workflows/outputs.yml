@@ -1,0 +1,16 @@
+name: Outputs Workflow
+on:
+  push:
+jobs:
+  setup:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v5
+      - name: Calcular versió de la app
+        id: version
+        run: |
+          VERSION=$(date +%Y%m%d)-${GITHUB_SHA:0:7}
+          echo "app_version=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Subir Artefacto
+        run: echo "Empaquetando tallerdigital-${{ steps.version.outputs.app_version }}.tar.gz"
