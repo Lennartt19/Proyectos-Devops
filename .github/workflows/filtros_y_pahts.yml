@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - main
+    paths: #Si no hubo cambios en estos archivos, no se ejecutará el evento push
+      - "app/**"
+      - "config/**"
+      - "Gemfile"
+      - "Gemfile.lock"
 
 jobs:
   build:
