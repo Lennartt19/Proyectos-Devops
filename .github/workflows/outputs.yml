@@ -14,3 +14,10 @@ jobs:
           echo "app_version=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Subir Artefacto
         run: echo "Empaquetando tallerdigital-${{ steps.version.outputs.app_version }}.tar.gz"
+      - name: Contar Test
+        id: test_count
+        run: |
+          TEST_COUNT=42
+          echo "test_count=$TEST_COUNT" >> "$GITHUB_OUTPUT"
+      - name: Mostrar Resultados
+        run: echo "Corrieron ${{ steps.test_count.outputs.test_count }} tests y la versión de la app es ${{ steps.version.outputs.app_version }}"
