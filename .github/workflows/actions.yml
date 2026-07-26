@@ -15,3 +15,5 @@ jobs:
           echo "Commit SHA: ${{ github.sha }}"
           echo "Disparado por: ${{ github.actor }}"
           echo "Entorno: ${{ env.RAILS_ENV }}"
+          echo "Evento: ${{ github.event_name }}"
+          echo "Referencia: ${{ github.ref_name }}"
