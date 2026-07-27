@@ -1,8 +1,10 @@
 name: Deploy a producción
 on:
   push:
-    branches:
+    braches_ignore:
       - main
+    # branches:
+    #   - main
     paths: #Si no hubo cambios en estos archivos, no se ejecutará el evento push
       - "app/**"
       - "config/**"

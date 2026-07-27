@@ -1,6 +1,8 @@
 name: Contexto de Github Actions
 on:
-  push
+  push:
+    ignore_branches:
+      - main
 
 jobs:
   setup:

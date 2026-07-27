@@ -1,6 +1,8 @@
 name: Actions Setup Workflow
 on:
   push:
+    ignore_branches:
+      - main
 
 jobs:
   setup:

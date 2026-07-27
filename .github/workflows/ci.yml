@@ -1,5 +1,9 @@
 name: CI
-on: push
+on:
+  push:
+    ignore_branches:
+      - main
+      
 jobs:
   lint:
     runs-on: ubuntu-24.04
