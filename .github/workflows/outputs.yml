@@ -1,6 +1,8 @@
 name: Outputs Workflow
 on:
   push:
+    branches-ignore:
+      - main
 jobs:
   setup:
     runs-on: ubuntu-24.04
