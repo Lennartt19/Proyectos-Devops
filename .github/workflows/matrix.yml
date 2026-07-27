@@ -16,7 +16,7 @@ jobs:
           - os: macos-latest
             ruby-version: '3.3'
         include:
-          - os: ubuntu-latest
+          - os: windows-latest
             ruby-version: '3.4'
             experimental-gem: true
     steps:
