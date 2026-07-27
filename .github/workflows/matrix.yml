@@ -8,9 +8,17 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-24.04, macos-latest]
         ruby-version: ['3.3', '3.4']
+      exclude:
+        - os: macos-latest
+          ruby-version: '3.3'
+      include:
+        - os: ubuntu-latest
+          ruby-version: '3.4'
+          experimental-gem: true
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
