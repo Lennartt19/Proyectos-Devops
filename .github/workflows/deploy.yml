@@ -1,0 +1,25 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    needs: [test]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    enviroment: production
+    steps:
+      - uses: actions/checkout@v5
+      - name: Desplegar a producción
+        run: echo "Desplegando a producción"
+      - name: Notificar fallo
+        if: failure()
+        run: echo "El despliegue a producción ha fallado"
+      - name: Notificar resultado final
+        if: always()
+        run: echo "Deploy determinado exitoso o no exitoso"
