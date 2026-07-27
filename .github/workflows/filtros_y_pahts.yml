@@ -1,7 +1,7 @@
 name: Deploy a producción
 on:
   push:
-    braches_ignore:
+    branches-ignore:
       - main
     # branches:
     #   - main

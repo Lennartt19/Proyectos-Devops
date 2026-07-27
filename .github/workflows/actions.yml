@@ -1,7 +1,7 @@
 name: Contexto de Github Actions
 on:
   push:
-    ignore_branches:
+    branches-ignore:
       - main
 
 jobs:

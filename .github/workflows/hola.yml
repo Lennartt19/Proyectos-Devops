@@ -1,7 +1,7 @@
 name: Hola Mundo
 on:
   push:
-    ignore_branches:
+    branches-ignore:
       - main
   pull_request: {}
 
