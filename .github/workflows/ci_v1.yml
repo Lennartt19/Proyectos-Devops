@@ -1,9 +1,8 @@
-name: CI_V1
+name: CI
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 permissions: {}
 
@@ -12,21 +11,35 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    outputs:
+      resultado: ${{ steps.rspec.outcome }}
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4'
           bundler-cache: true
-      - run: bundle exec rspec
+      - name: Correr rspec
+        id: rspec
+        run: bundle exec rspec
 
   comentar-resultado:
     needs: test
+    if: always()
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
-      - name: Comentar en el PR
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr comment ${{ github.event.pull_request.number }} --body "Tests OK"
+      - name: Comentar en el PR con actions/github-script
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const resultado = '${{ needs.test.outputs.resultado }}' === 'success'
+              ? 'Tests OK'
+              : 'Tests fallaron';
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: resultado,
+            });
