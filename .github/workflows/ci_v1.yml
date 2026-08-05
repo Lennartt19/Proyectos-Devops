@@ -2,7 +2,8 @@ name: CI_V1
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 permissions: {}
 
